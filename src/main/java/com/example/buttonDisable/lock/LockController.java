@@ -38,7 +38,7 @@ public class LockController {
             return null;
         }
 
-        //useridにはセッションに保管しているユーザIDを入れる。ここはサンプルなので固定
+        //TODO useridにはセッションに保管しているユーザIDを入れる。ここはサンプルなので固定
         return this.lockService.saveOrUpdate(
                 new LockEntity(target, 123, new Date()));
     }
