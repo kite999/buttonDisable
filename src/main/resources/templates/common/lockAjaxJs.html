@@ -17,6 +17,7 @@
                 }
                 //ロックがかかっているので入力域,submitをロックする
                 $("select,input[type='text'],input[type='radio'],input[type='password'],input[type='submit'],input[type='checkbox'],textarea").attr('disabled','disabled');
+                $(".lockMessage").text(data + "さんが編集中です。ロックしています。");
                 return;
             }).fail(function(data){
                 console.log(data);

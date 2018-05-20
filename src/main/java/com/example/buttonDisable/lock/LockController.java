@@ -28,7 +28,7 @@ public class LockController {
         if (lockEntity == null) {
             return "false";
         }
-        return "true";
+        return Integer.toString(lockEntity.getUserId());
     }
 
     @GetMapping("/lock/create/{target}")
