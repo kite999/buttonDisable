@@ -21,13 +21,14 @@ public class LockController {
         return this.lockService.getByTarget(target);
     }
 
-    @GetMapping("/lock/islock/{target}")
-    public String islock(@PathVariable String target) {
+    @GetMapping("/lock/getUser/{target}")
+    public String getUser(@PathVariable String target) {
         //TODO セッションのユーザIDがLockEntityのユーザIDと同じならfalseで返却
         LockEntity lockEntity = this.lockService.getByTarget(target);
         if (lockEntity == null) {
             return "false";
         }
+        //TODO ユーザテーブルがわからないので仮にidを返しています。ユーザ名などを返すといいと思います。
         return Integer.toString(lockEntity.getUserId());
     }
 

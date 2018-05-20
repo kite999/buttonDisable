@@ -4,7 +4,7 @@
         $(function(){
             $.ajax({
                 type: 'GET',
-                url: '/lock/islock/[[${lockTarget}]]',
+                url: '/lock/getUser/[[${lockTarget}]]',
                 dataType: 'json',
             }).done(function(data){
                 if (data == false) {
