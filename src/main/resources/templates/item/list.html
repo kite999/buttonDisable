@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>一覧画面</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script th:replace="/common/lockButtonJs :: lockButtonJs"></script>
+</head>
+<body>
+<h1>商品一覧画面</h1><p th:text="${gamenId}">name</p>
+<table>
+    <thead><th>商品名</th><th>ボタン</th></thead>
+    <tbody>
+        <tr><td>からあげ</td><td><span sample:lockButton target="|${gamenId}_karaage|" query="/item/henshu?itemId=karaage"></span></td></tr>
+        <tr><td>ししゃも</td><td><span sample:lockButton target="|${gamenId}_sishamo|" query="/item/henshu?itemId=sishamo"></span></td></tr>
+        <tr><td>やきとり</td><td><span sample:lockButton target="|${gamenId}_yakitori|" query="/item/henshu?itemId=yakitori"></span></td></tr>
+    </tbody>
+</table>
+</body>
+</html>

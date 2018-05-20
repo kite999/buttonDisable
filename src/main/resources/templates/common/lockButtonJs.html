@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/JavaScript" th:fragment="lockButtonJs">
+        $(function(){
+            $('.lockButton').on('click', function() {
+                if ($(this).data("query")) {
+                    location.href = $(this).data("query");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

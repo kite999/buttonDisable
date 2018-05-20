@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>詳細</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script th:replace="/common/lockAjaxJs :: lockControl(${lockTarget})"></script>
+</head>
+<body>
+<h1 th:text="|${itemId}編集画面|"></h1>
+<p>
+<input type="checkbox" name="riyu" value="1" checked="checked">カテゴリ１
+<input type="checkbox" name="riyu" value="2">カテゴリ２
+<input type="checkbox" name="riyu" value="3">カテゴリ３
+</p>
+<p>
+<select name="example">
+    <option value="サンプル1">サンプル1</option>
+    <option value="サンプル2">サンプル2</option>
+    <option value="サンプル3">サンプル3</option>
+</select>
+</p>
+<p>
+<input type="text" name="namae" size="40" maxlength="20">
+</p>
+<p>
+<textarea name="msg" cols=40 rows=4>
+あいうえお
+</textarea>
+</p>
+<button onclick="history.back()">戻る</button>
+<form action="/item/list" method="GET">
+<input type="submit" id="submit" value="確定">
+</form>
+</body>
+</html>

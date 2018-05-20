@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/JavaScript" th:fragment="lockControl(lockTarget)">
+        $(function(){
+            $.ajax({
+                type: 'GET',
+                url: '/lock/islock/[[${lockTarget}]]',
+                dataType: 'json',
+            }).done(function(data){
+                if (data == false) {
+                    //ロックをかけていないのでロックをかける
+                    lockTarget();
+                    $(window).on("beforeunload",function(){
+                        unlockTarget();
+                    });
+                    return;
+                }
+                //ロックがかかっているので入力域,submitをロックする
+                $("select,input[type='text'],input[type='radio'],input[type='password'],input[type='submit'],input[type='checkbox'],textarea").attr('disabled','disabled');
+                return;
+            }).fail(function(data){
+                console.log(data);
+                return;
+            }).always(function(data){
+                return;
+            });
+
+            function lockTarget() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/lock/create/[[${lockTarget}]]',
+                    dataType: 'json',
+                }).fail(function(data){
+                    console.log(data);
+                    return;
+                }).always(function(data){
+                    return;
+                });
+            }
+
+            function unlockTarget() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/lock/delete/[[${lockTarget}]]',
+                    dataType: 'json',
+                    async: false,
+                }).fail(function(data){
+                    console.log(data);
+                    return;
+                }).always(function(data){
+                    return;
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
