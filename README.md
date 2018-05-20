@@ -11,6 +11,7 @@
 - 編集画面への遷移ボタンを対象がロックされているか、されていないかを明示的に表示します。
 ## 未実装
 - セッションを実装していないのでユーザーIDは固定しています。変更ください。使用箇所：LockController,LockButtonTagProcessor
+- ブラウザのプロセスがクラッシュした場合などの対策として、一定時間すぎたロックレコードを削除する仕組みが入りますが、実装していません。定時バッチが必要になると思われます。
 ## テーブル
 様々な機能で共通的に使用する為、ロック専用のテーブルを使用します。
 テーブル名 lock
@@ -50,7 +51,8 @@ Dialectでタグの定義をし、Processorでタグの生成処理などを行�
 Dialectを作成し、processors.addすることにより下記のようにタグを自作します。
 タグを自作することによってDBに接続し、ロックの有無を確認しボタン生成といった制御しています。
 
-例ではsample:lockButtonといったタグを作成しています。
+例ではsample:lockButtonといったタグを作成しています。ロックのターゲットとして、一意になるパラメータが必要です。<br>
+下記例においては編集画面のID＋一意なキーを文字連結して渡しています。
 ```
 <span sample:lockButton target="|${gamenId}_shainA|" query="/shain/henshu?shainId=shainA"></span>
 ```
@@ -75,3 +77,8 @@ sample:lockButtonを使用した時にボタンで遷移できるように下記
 
 呼び出し方法は<br>
 /src/main/resources/templates/shain/henshu.htmlを参考にしてください。
+尚、ロックのターゲットとして、一意になるパラメータが必要です。<br>
+下記例においては編集画面のID＋一意なキーを文字連結して渡しています。
+```
+<script th:replace="common/lockAjaxJs :: lockControl(${lockTarget})"></script>
+```
