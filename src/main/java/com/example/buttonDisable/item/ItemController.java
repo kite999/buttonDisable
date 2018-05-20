@@ -15,7 +15,7 @@ public class ItemController {
         return "item/henshu";
     }
 
-    @GetMapping("/item/list")
+    @GetMapping({"/item/list", "/"})
     public String list(Model model) {
         model.addAttribute("gamenId", SampleConsts.ITEM_HENSHU_GAMEN_ID);
         return "item/list";
