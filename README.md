@@ -30,20 +30,20 @@ lock_time   timestamp       NOT NULL
 ```
 
 ## ソース解説
-###サンプルソース
+### サンプルソース
 下記は例の為のリスト、編集画面を表示する用のただのサンプルです。
 
 /src/main/java/com/example/buttonDisable/item
 /src/main/java/com/example/buttonDisable/shain
 /src/main/resources/templates/item
 /src/main/resources/templates/shain
-###ロック機能
+### ロック機能
 ロックテーブルを読み込んだり、islockや書き込みWEBAPIを提供します。
 
 /src/main/java/com/example/buttonDisable/lock
-###Thymeleafタグ
+### Thymeleafタグ
 遷移先のアイテムがロックかかっているかどうかを判断してボタンの内容を変化させるThymeleaf用のDialectタグを実装しています。
-####Dialect
+#### Dialect
 Dialectでタグの定義をし、Processorでタグの生成処理などを行います。
 /src/main/java/com/example/buttonDisable/thymeleaf/common/SampleDialect.java
 
@@ -54,17 +54,17 @@ Dialectを作成し、processors.addすることにより下記のようにタ�
 ```
 <span sample:lockButton target="|${gamenId}_shainA|" query="/shain/henshu?shainId=shainA"></span>
 ```
-####Processor
+#### Processor
 doProcessをオーバーライドし、処理を実装します。
 ここでは、lockテーブルを参照、ボタンの生成などを行っています。
-###Javascript
-####遷移用共通javascript
+### Javascript
+#### 遷移用共通javascript
 sample:lockButtonを使用した時にボタンで遷移できるように下記javascriptを呼び出します。
 /src/main/resources/templates/common/lockButtonJs.html
 
 呼び出し方法は<br>
 /src/main/resources/templates/shain/list.htmlを参考にしてください。
-####ロック、アンロックjavascript
+#### ロック、アンロックjavascript
 編集画面では下記を呼び出します。
 下記を呼び出すと表示時にロックがかかっているかどうかを参照し、ロックがかかっていると入力域、サブミットボタンのロックを行います。
 
