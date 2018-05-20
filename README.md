@@ -59,13 +59,13 @@ doProcessをオーバーライドし、処理を実装します。
 ここでは、lockテーブルを参照、ボタンの生成などを行っています。
 ### Javascript
 #### 遷移ボタン用共通javascript
-/src/main/resources/templates/common/lockButtonJs.html
+/src/main/resources/templates/common/lockButtonJs.html<br>
 sample:lockButtonを使用した時にボタンで遷移できるように下記javascriptを呼び出します。
 
 呼び出し方法は<br>
 /src/main/resources/templates/shain/list.htmlを参考にしてください。
 #### ロック、アンロック共通javascript
-/src/main/resources/templates/common/lockAjaxJs.html
+/src/main/resources/templates/common/lockAjaxJs.html<br>
 編集画面では下記を呼び出します。
 下記を呼び出すと表示時にロックがかかっているかどうかを参照し、ロックがかかっていると入力域、サブミットボタンのロックを行います。
 
